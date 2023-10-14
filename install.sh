@@ -33,6 +33,8 @@ sudo mkdir /home/datauser
 sudo touch /home/datauser
 sed -i "s/$domain.pem/xcodehoster.com.pem/g" support/subdomain.conf
 sed -i "s/$domain.key/xcodehoster.com.key/g" support/subdomain.conf
+sed -i "s/$domain.pem/xcodehoster.com.pem/g" support/virtualhostsubdomainreverseproxy.conf
+sed -i "s/$domain.key/xcodehoster.com.key/g" support/virtualhostsubdomainreverseproxy.conf
 sudo mkdir /home/xcodehoster
 sudo touch /home/datauser/locked
 sudo mkdir /home/datapengguna
@@ -57,20 +59,32 @@ sudo apt install jq
 sudo sudo apt install imagemagick
 passwordmysql="-p$passwordmysql"
 sed -i "s/-ppasswordmysql/$passwordmysql/g" support/run.sh
+sed -i "s/xcodehoster.com/$passwordmysql/g" support/aksesrun.sh
 sed -i "s/xcodehoster.com/$domain/g" support/formdata.sh
 sed -i "s/xcodehoster.com/$domain/g" support/run.sh
+sed -i "s/xcodehoster.com/$domain/g" support/aksesrun.sh
 sed -i "s/xcodehoster.com/$domain/g" support/aktivasi3.sh
 sed -i "s/xcodehoster.com.pem/$domain.pem/g" support/subdomain.conf
 sed -i "s/xcodehoster.com.key/$domain.key/g" support/subdomain.conf
+sed -i "s/xcodehoster.com.pem/$domain.pem/g" support/virtualhostsubdomainreverseproxy.conf
+sed -i "s/xcodehoster.com.key/$domain.key/g" support/virtualhostsubdomainreverseproxy.conf
 sed -i "s/xcodehoster.com/$domain/g" support/index.html
-sed -i "s/-ppasswordmysql/$passwordmysql/g" support/run.sh 
+sed -i "s/-ppasswordmysql/$passwordmysql/g" support/run.sh
+sed -i "s/-ppasswordmysql/$passwordmysql/g" support/aksesrun.sh
+sed -i "s/xcodehoster.com/$domain/g" support/aksesform.sh
+sed -i "s/xcodehoster.com/$domain/g" support/running1.php
 sudo cp support/run.sh /usr/lib/cgi-bin
+sudo cp support/aksesrun.sh /usr/lib/cgi-bin
 sudo cp support/aktivasi3.sh /usr/lib/cgi-bin
 sudo cp support/formdata.sh /usr/lib/cgi-bin
+sudo cp support/aksesform.sh /usr/lib/cgi-bin
 sudo cp support/acak.txt /usr/lib/cgi-bin
 sudo chmod 777 /usr/lib/cgi-bin/acak.txt
 sudo cp support/subdomain.conf /home/xcodehoster
+sudo cp support/virtualhostsubdomainreverseproxy.conf /home/xcodehoster
 sudo cp support/index.html /home/xcodehoster
+sudo cp support/runing1.php /home/xcodehoster
+
 sudo cp support/bootstrap.min.css /home/xcodehoster
 sudo cp support/hosting.jpg /home/xcodehoster
 sudo mkdir /etc/apache2/ssl
